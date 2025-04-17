@@ -15,6 +15,7 @@ namespace TextRPG
         private int atk; // 공격력
         private int def; // 방어력
         private int hp; // 체력
+        private int curHp; // 현재 체력
         private int gold; // 골드
         private int extraAtk;
         private int extraDef;
@@ -29,6 +30,7 @@ namespace TextRPG
             atk = 10;
             def = 4;
             hp = 100;
+            curHp = hp;
             gold = 5000;
             extraAtk = 0;
             extraDef = 0;
@@ -73,11 +75,6 @@ namespace TextRPG
         {
             extraAtk = e_atk;
             extraDef = e_def;
-        }
-
-        public void Rest()
-        {
-
         }
     }
 }
