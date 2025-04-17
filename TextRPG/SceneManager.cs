@@ -336,7 +336,8 @@ namespace TextRPG
             if(curScene == Scene.SELL)
             {
                 mode = "판매";
-
+                showItemList = shop.ShowReceipt;
+                shopAction = shop.SellItem;
             }
             else if(curScene == Scene.BUY)
             {
@@ -365,7 +366,7 @@ namespace TextRPG
             switch(choice)
             {
                 case 0:
-                    curScene = Scene.START;
+                    curScene = Scene.SHOP;
                     break;
                 case -1:
                     break;

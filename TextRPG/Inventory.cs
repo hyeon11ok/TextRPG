@@ -37,6 +37,11 @@ namespace TextRPG
             items.Add(item, false);
         }
 
+        public void RemoveItem(Item item)
+        {
+            items.Remove(item);
+        }
+
         public void ChangeEquipState(int idx)
         {
             int curIdx = 1;

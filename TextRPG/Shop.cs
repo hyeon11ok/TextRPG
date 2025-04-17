@@ -83,5 +83,39 @@ namespace TextRPG
                 }
             }
         }
+
+        public void SellItem(int idx, Player player, Inventory inventory)
+        {
+            int curIdx = 1;
+            foreach(KeyValuePair<Item, bool> item in items)
+            {
+                if(item.Value)
+                {
+                    if(curIdx == idx)
+                    {
+                        items[item.Key] = false;
+                        player.UseGold(-item.Key.Gold);
+                        inventory.RemoveItem(item.Key);
+                        break;
+                    }
+                    else
+                    {
+                        curIdx++;
+                    }
+                }
+            }
+        }
+
+        public void ShowReceipt(ref int idx)
+        {
+            foreach(KeyValuePair<Item, bool> item in items)
+            {
+                if(item.Value)
+                {
+                    string goldStr = item.Key.Gold.ToString() + " G";
+                    Console.WriteLine($"- {++idx}. {item.Key.GetItemInfo()} / {goldStr}");
+                }
+            }
+        }
     }
 }
