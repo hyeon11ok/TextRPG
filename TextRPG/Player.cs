@@ -20,7 +20,16 @@ namespace TextRPG
         private int extraAtk;
         private int extraDef;
 
+        public int Level { get { return level; } }
+        public string Name { get { return name; } }
+        public string CharClass { get { return charClass; } }
+        public int Atk { get { return atk; } }
+        public int Def { get { return def; } }
+        public int Hp { get { return hp; } }
+        public int CurHp { get { return curHp; } }
         public int Gold { get { return gold; } }
+        public int ExtraAtk { get { return extraAtk; } }
+        public int ExtraDef { get { return extraDef; } }
 
         public Player()
         {
@@ -75,6 +84,13 @@ namespace TextRPG
         {
             extraAtk = e_atk;
             extraDef = e_def;
+        }
+
+        public void Heal(int amount, int price)
+        {
+            gold -= price;
+            curHp += amount;
+            if(curHp > hp) curHp = hp;
         }
     }
 }

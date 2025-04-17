@@ -14,6 +14,7 @@ namespace TextRPG
         private Player player;
         private Inventory inventory;
         private Shop shop;
+        private Rest rest;
 
         public SceneManager()
         {
@@ -21,6 +22,7 @@ namespace TextRPG
             player = new Player();
             inventory = new Inventory();
             shop = new Shop();
+            rest = new Rest();
         }
 
         public void GameStart()
@@ -58,6 +60,9 @@ namespace TextRPG
                         break;
                     case Scene.BUY:
                         BuyScene();
+                        break;
+                    case Scene.REST:
+                        RestScene();
                         break;
                     default:
                         break;
@@ -167,10 +172,11 @@ namespace TextRPG
             Console.WriteLine("1. 상태 보기");
             Console.WriteLine("2. 인벤토리");
             Console.WriteLine("3. 상점");
+            Console.WriteLine("4. 휴식하기");
             Console.WriteLine("0. 게임 종료");
             Console.WriteLine();
 
-            int choice = ChooseAction(0, 3);
+            int choice = ChooseAction(0, 4);
             switch(choice)
             {
                 case 0:
@@ -184,6 +190,9 @@ namespace TextRPG
                     break;
                 case 3:
                     curScene = Scene.SHOP;
+                    break;
+                case 4:
+                    curScene = Scene.REST;
                     break;
                 default:
                     break;
@@ -331,6 +340,31 @@ namespace TextRPG
                     break;
                 default:
                     shop.BuyItem(choice, player, inventory);
+                    break;
+            }
+        }
+
+        void RestScene()
+        {
+            Console.WriteLine("휴식하기");
+            Console.WriteLine($"{rest.Price} G 를 내면 체력을 {rest.HealAmount} 회복할 수 있습니다. (보유 골드 : {player.Gold} G)");
+            Console.WriteLine($"현재 체력 : {player.CurHp}/{player.Hp}");
+            Console.WriteLine();
+
+            Console.WriteLine("1. 휴식하기");
+            Console.WriteLine("0. 나가기");
+            Console.WriteLine();
+
+            int choice = ChooseAction(0, 1);
+            switch(choice)
+            {
+                case 0:
+                    curScene = Scene.START;
+                    break;
+                case 1:
+                    rest.Resting(player);
+                    break;
+                default:
                     break;
             }
         }
