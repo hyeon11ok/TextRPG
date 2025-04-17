@@ -16,6 +16,14 @@ namespace TextRPG
         private Shop shop;
         private Rest rest;
 
+        // 상점 아이템 목록 출력 함수
+        private delegate void ShowItemList(ref int cnt);
+        private event ShowItemList showItemList;
+
+        // 상점 기능 함수(구매/판매)
+        private delegate void ShopAction(int idx, Player player, Inventory inventory);
+        private event ShopAction shopAction;
+
         public SceneManager()
         {
             curScene = Scene.START;
@@ -59,10 +67,13 @@ namespace TextRPG
                         EquipmentScene();
                         break;
                     case Scene.BUY:
-                        BuyScene();
+                        BuySellScene();
                         break;
                     case Scene.REST:
                         RestScene();
+                        break;
+                    case Scene.SELL:
+                        BuySellScene();
                         break;
                     default:
                         break;
@@ -264,11 +275,12 @@ namespace TextRPG
             Console.WriteLine();
 
             Console.WriteLine("1. 아이템 구매");
+            Console.WriteLine("2. 아이템 판매");
             Console.WriteLine("0. 나가기");
             Console.WriteLine();
 
 
-            int choice = ChooseAction(0, 1);
+            int choice = ChooseAction(0, 2);
             switch(choice)
             {
                 case 0:
@@ -276,6 +288,9 @@ namespace TextRPG
                     break;
                 case 1:
                     curScene = Scene.BUY;
+                    break;
+                case 2:
+                    curScene = Scene.SELL;
                     break;
                 default:
                     break;
@@ -311,10 +326,26 @@ namespace TextRPG
             }
         }
 
-        void BuyScene()
+        void BuySellScene()
         {
             int cnt = 0;
-            Console.WriteLine("상점 - 아이템 구매");
+            string mode = "";
+            showItemList = shop.ShowItems;
+            shopAction = shop.BuyItem;
+
+            if(curScene == Scene.SELL)
+            {
+                mode = "판매";
+
+            }
+            else if(curScene == Scene.BUY)
+            {
+                mode = "구매";
+                showItemList = shop.ShowItems;
+                shopAction = shop.BuyItem;
+            }
+
+            Console.WriteLine($"상점 - 아이템 {mode}");
             Console.WriteLine("필요한 아이템을 얻을 수 있는 상점입니다.");
             Console.WriteLine();
 
@@ -323,10 +354,10 @@ namespace TextRPG
             Console.WriteLine();
 
             Console.WriteLine("[아이템 목록]");
-            shop.ShowItems(ref cnt);
+            showItemList(ref cnt);
             Console.WriteLine();
 
-            Console.WriteLine("1. 아이템 구매");
+            Console.WriteLine($"1. 아이템 {mode}");
             Console.WriteLine("0. 나가기");
             Console.WriteLine();
 
@@ -339,7 +370,7 @@ namespace TextRPG
                 case -1:
                     break;
                 default:
-                    shop.BuyItem(choice, player, inventory);
+                    shopAction(choice, player, inventory);
                     break;
             }
         }

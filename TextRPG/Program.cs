@@ -10,7 +10,8 @@ namespace TextRPG
         SHOP,
         EQUIPMENT,
         BUY,
-        REST
+        REST,
+        SELL
     }
 
     public enum ItemType
