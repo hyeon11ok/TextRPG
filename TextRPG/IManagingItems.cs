@@ -8,7 +8,7 @@ namespace TextRPG
 {
     internal interface IManagingItems
     {
-        public void PrintItems();
-        public void PrintItems(ref int idx);
+        public void ShowItems();
+        public void ShowItems(ref int idx);
     }
 }

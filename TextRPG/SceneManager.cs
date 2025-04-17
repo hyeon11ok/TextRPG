@@ -219,7 +219,7 @@ namespace TextRPG
             Console.WriteLine();
 
             Console.WriteLine("[아이템 목록]");
-            inventory.PrintItems();
+            inventory.ShowItems();
             Console.WriteLine();
 
             Console.WriteLine("1. 장착 관리");
@@ -251,7 +251,7 @@ namespace TextRPG
             Console.WriteLine();
 
             Console.WriteLine("[아이템 목록]");
-            shop.PrintItems();
+            shop.ShowItems();
             Console.WriteLine();
 
             Console.WriteLine("1. 아이템 구매");
@@ -281,7 +281,7 @@ namespace TextRPG
             Console.WriteLine();
 
             Console.WriteLine("[아이템 목록]");
-            inventory.PrintItems(ref cnt);
+            inventory.ShowItems(ref cnt);
             Console.WriteLine();
 
             Console.WriteLine("0. 나가기");
@@ -314,7 +314,7 @@ namespace TextRPG
             Console.WriteLine();
 
             Console.WriteLine("[아이템 목록]");
-            shop.PrintItems(ref cnt);
+            shop.ShowItems(ref cnt);
             Console.WriteLine();
 
             Console.WriteLine("1. 아이템 구매");

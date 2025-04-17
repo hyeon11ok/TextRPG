@@ -74,5 +74,10 @@ namespace TextRPG
             extraAtk = e_atk;
             extraDef = e_def;
         }
+
+        public void Rest()
+        {
+
+        }
     }
 }

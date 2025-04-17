@@ -10,7 +10,7 @@ namespace TextRPG
     {
         private Dictionary<Item, bool> items = new Dictionary<Item, bool>();
 
-        public void PrintItems()
+        public void ShowItems()
         {
             foreach(KeyValuePair<Item, bool> item in items)
             {
@@ -18,7 +18,7 @@ namespace TextRPG
             }
         }
 
-        public void PrintItems(ref int idx)
+        public void ShowItems(ref int idx)
         {
             foreach(KeyValuePair<Item, bool> item in items)
             {

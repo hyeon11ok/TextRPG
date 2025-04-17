@@ -15,13 +15,14 @@ namespace TextRPG
             items.Add(new Item("수련자 갑옷", "수련에 도움을 주는 갑옷입니다.", 1000, ItemType.ARMOR, 5), false);
             items.Add(new Item("무쇠갑옷", "무쇠로 만들어져 튼튼한 갑옷입니다.", 1500, ItemType.ARMOR, 9), false);
             items.Add(new Item("스파르타의 갑옷", "스파르타의 전사들이 사용했다는 전설의 갑옷입니다.", 3500, ItemType.ARMOR, 15), false);
+            items.Add(new Item("경질화 갑옷", "거인의 경질화 능력으로 만든 갑옷", 5000, ItemType.ARMOR, 20), false);
             items.Add(new Item("낡은 검", "쉽게 볼 수 있는 낡은 검 입니다.", 600, ItemType.WEAPON, 2), false);
             items.Add(new Item("청동 도끼", "어디선가 사용됐던거 같은 도끼입니다.", 1500, ItemType.WEAPON, 5), false);
             items.Add(new Item("스파르타의 창", "스파르타의 전사들이 사용했다는 전설의 창입니다.", 3500, ItemType.WEAPON, 7), false);
-
+            items.Add(new Item("입체 기동 장치", "신조오 사사게요!!!", 5000, ItemType.WEAPON, 10), false);
         }
 
-        public void PrintItems()
+        public void ShowItems()
         {
             foreach(KeyValuePair<Item, bool> item in items)
             {
@@ -34,7 +35,7 @@ namespace TextRPG
             }
         }
 
-        public void PrintItems(ref int idx)
+        public void ShowItems(ref int idx)
         {
             foreach(KeyValuePair<Item, bool> item in items)
             {
