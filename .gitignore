@@ -1,27 +1,23 @@
-.vs/TextRPG/v17/.suo
-.vs/TextRPG/v17/.futdcache.v2
-.vs/ProjectEvaluation/textrpg.projects.v7.bin
-.vs/ProjectEvaluation/textrpg.metadata.v7.bin
-.vs/TextRPG/v17/.suo
-.vs/TextRPG/v17/.futdcache.v2
-.vs/ProjectEvaluation/textrpg.projects.v7.bin
-.vs/ProjectEvaluation/textrpg.metadata.v7.bin
-.vs/TextRPG/v17/.suo
-.vs/TextRPG/v17/.futdcache.v2
-.vs/ProjectEvaluation/textrpg.projects.v7.bin
-.vs/ProjectEvaluation/textrpg.metadata.v7.bin
-/.vs
-.vs/ProjectEvaluation/textrpg.metadata.v7.bin
-/.vs/ProjectEvaluation
-*.bin
-*.bin
-.vs/ProjectEvaluation/textrpg.projects.v7.bin
-/.vs
-/.vs/ProjectEvaluation
-.vs/TextRPG/v17/.suo
-*.v2
-/.vs/ProjectEvaluation
-.vs/TextRPG/v17/.suo
-/.vs
-/.vs/TextRPG
-/.vs/TextRPG/v17
+# Visual Studio 관련
+.vs/
+*.user
+*.suo
+
+# 빌드 출력물
+bin/
+obj/
+
+# 기타 임시 파일
+*.log
+*.tmp
+*.cache
+
+# Rider 사용자일 경우
+.idea/
+
+# NuGet 패키지
+packages/
+*.nupkg
+
+# 환경 설정
+*.DotSettings
