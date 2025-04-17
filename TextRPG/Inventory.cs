@@ -9,6 +9,8 @@ namespace TextRPG
     internal class Inventory :IManagingItems
     {
         private Dictionary<Item, bool> items = new Dictionary<Item, bool>();
+        private Item? weapon;
+        private Item? armor;
 
         public void ShowItems()
         {
@@ -49,7 +51,37 @@ namespace TextRPG
             {
                 if(curIdx == idx)
                 {
-                    items[item.Key] = !items[item.Key];
+                    switch(item.Key.Type)
+                    {
+                        case ItemType.WEAPON:
+                            if(weapon == null)
+                            {
+                                weapon = item.Key;
+                                items[item.Key] = true;
+                            }
+                            else
+                            {
+                                items[weapon] = false;
+                                weapon = item.Key;
+                                items[item.Key] = true;
+                            }
+                            break;
+                        case ItemType.ARMOR:
+                            if(armor == null)
+                            {
+                                armor = item.Key;
+                                items[item.Key] = true;
+                            }
+                            else
+                            {
+                                items[armor] = false;
+                                armor = item.Key;
+                                items[item.Key] = true;
+                            }
+                            break;
+                    }
+
+                    
                     break;
                 }
                 else
@@ -65,20 +97,9 @@ namespace TextRPG
         {
             int e_atk = 0;
             int e_def = 0;
-            foreach(KeyValuePair<Item, bool> item in items)
-            {
-                if(item.Value)
-                { // 장착중인 아이템
-                    if(item.Key.Type == ItemType.WEAPON)
-                    {
-                        e_atk += item.Key.Status;
-                    }
-                    else
-                    {
-                        e_def += item.Key.Status;
-                    }
-                }
-            }
+
+            if(weapon != null) e_atk += weapon.Status;
+            if(armor != null) e_def += armor.Status;
 
             player.SetExtraStatus(e_atk, e_def);
         }
