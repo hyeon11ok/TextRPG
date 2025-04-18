@@ -29,6 +29,13 @@ namespace TextRPG
         THIEF
     }
 
+    public enum DungeonDifficulty
+    {
+        EASY,
+        NORMAL,
+        HARD
+    }
+
     internal class Program
     {
         static void Main(string[] args)

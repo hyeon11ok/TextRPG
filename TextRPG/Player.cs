@@ -86,9 +86,8 @@ namespace TextRPG
             extraDef = e_def;
         }
 
-        public void Heal(int amount, int price)
+        public void HpChange(int amount)
         {
-            gold -= price;
             curHp += amount;
             if(curHp > hp) curHp = hp;
         }

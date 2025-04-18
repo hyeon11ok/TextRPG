@@ -34,7 +34,8 @@ namespace TextRPG
                 }
                 else
                 {
-                    player.Heal(healAmount, price);
+                    player.UseGold(price);
+                    player.HpChange(healAmount);
                     Console.WriteLine("회복되었습니다.");
                 }
             }
