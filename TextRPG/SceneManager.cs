@@ -75,6 +75,9 @@ namespace TextRPG
                     case Scene.SELL:
                         BuySellScene();
                         break;
+                    case Scene.DUNGEON:
+                        DungeonScene();
+                        break;
                     default:
                         break;
                 }
@@ -184,10 +187,11 @@ namespace TextRPG
             Console.WriteLine("2. 인벤토리");
             Console.WriteLine("3. 상점");
             Console.WriteLine("4. 휴식하기");
+            Console.WriteLine("5. 던전 입장");
             Console.WriteLine("0. 게임 종료");
             Console.WriteLine();
 
-            int choice = ChooseAction(0, 4);
+            int choice = ChooseAction(0, 5);
             switch(choice)
             {
                 case 0:
@@ -204,6 +208,9 @@ namespace TextRPG
                     break;
                 case 4:
                     curScene = Scene.REST;
+                    break;
+                case 5:
+                    curScene = Scene.DUNGEON;
                     break;
                 default:
                     break;
@@ -395,6 +402,38 @@ namespace TextRPG
                     break;
                 case 1:
                     rest.Resting(player);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        void DungeonScene()
+        {
+            Console.WriteLine("던전입장");
+            Console.WriteLine("이곳에서 던전으로 들어가기전 활동을 할 수 있습니다.");
+            Console.WriteLine();
+
+            Console.WriteLine("1. 쉬운 던전 | 방어력 5 이상 권장");
+            Console.WriteLine("2. 일반 던전 | 방어력 11 이상 권장");
+            Console.WriteLine("3. 어려운 던전 | 방어력 17 이상 권장");
+            Console.WriteLine("0. 나가기");
+            Console.WriteLine();
+
+            int choice = ChooseAction(0, 3);
+            switch(choice)
+            {
+                case 0:
+                    
+                    break;
+                case 1:
+                    
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+
                     break;
                 default:
                     break;

@@ -11,7 +11,8 @@ namespace TextRPG
         EQUIPMENT,
         BUY,
         REST,
-        SELL
+        SELL,
+        DUNGEON
     }
 
     public enum ItemType
